@@ -1,0 +1,10 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ title }} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <pre>
+      <code [highlight]="data | json" class='code'></code>
+    </pre>
+  </mat-expansion-panel>
+</mat-accordion>
