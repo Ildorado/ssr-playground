@@ -12,9 +12,10 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListPostsComponent } from './list-posts/list-posts.component';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
+import { CreatePostsComponent } from './create-posts/create-posts.component';
 
 @NgModule({
-  declarations: [AppComponent, GetPostsComponent, ListPostsComponent, ExpansionPanelComponent],
+  declarations: [AppComponent, GetPostsComponent, ListPostsComponent, ExpansionPanelComponent, CreatePostsComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     CoreModule,

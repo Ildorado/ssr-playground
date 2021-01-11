@@ -8,7 +8,7 @@ import {
   TransferState,
 } from '@angular/platform-browser';
 import { isPlatformServer } from '@angular/common';
-
+import { HttpBodyPost } from '../typescript/interfaces';
 @Injectable()
 export class CustomHttpClientService {
   constructor(
@@ -29,6 +29,31 @@ export class CustomHttpClientService {
     } else {
       return this.httpClient
         .get<T>(path, { observe: 'body', responseType: 'json', params: params })
+        .pipe(
+          tap((response) => {
+            if (isPlatformServer(this.platformId)) {
+              this.transferState.set<T>(transferKey, response);
+            }
+          })
+        );
+    }
+  }
+  set<T>(path: string, body: HttpBodyPost, params?: HttpParams): Observable<T> {
+    const transferKey: StateKey<T> = makeStateKey(
+      `${path}?${params != null ? params.toString() : ''}`
+    );
+
+    if (this.transferState.hasKey(transferKey)) {
+      return of(this.transferState.get<any>(transferKey, 0)).pipe(
+        tap(() => this.transferState.remove(transferKey))
+      );
+    } else {
+      return this.httpClient
+        .post<T>(path, body, {
+          observe: 'body',
+          responseType: 'json',
+          params: params,
+        })
         .pipe(
           tap((response) => {
             if (isPlatformServer(this.platformId)) {

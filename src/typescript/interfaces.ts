@@ -1,10 +1,15 @@
 export interface Post {
-  iserId: number;
+  userId: number;
   id: number;
   body: string;
   title: string;
 }
 
+export interface HttpBodyPost {
+  userId: number;
+  body: string;
+  title: string;
+}
 export interface User {
   name: string;
   email: string;
