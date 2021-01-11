@@ -9,7 +9,9 @@ import { Post } from '../../typescript/interfaces';
 })
 export class ExpansionPanelComponent implements OnInit {
   @Input() title!: string;
-  @Input() data!: Post | Post[];
+  @Input() output!: Post | Post[];
+  @Input() input?: string;
+
   panelOpenState: boolean = false;
   constructor(private http: CustomHttpClientService) {}
 

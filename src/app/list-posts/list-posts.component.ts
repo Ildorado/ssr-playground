@@ -8,7 +8,10 @@ import { Post } from '../../typescript/interfaces';
   styleUrls: ['./list-posts.component.scss'],
 })
 export class ListPostsComponent implements OnInit {
-  posts!: Post[];
+  posts!: any;
+  input = `fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((response) => response.json())
+    .then((json) => console.log(json));`;
   panelOpenState: boolean = false;
   constructor(private http: CustomHttpClientService) {}
 
@@ -16,7 +19,7 @@ export class ListPostsComponent implements OnInit {
     this.http
       .get<Post[]>('https://jsonplaceholder.typicode.com/posts')
       .subscribe((data) => {
-        this.posts = data.slice(0,3);
+        this.posts = [...data.slice(0, 2), '...', data[data.length - 1]];
       });
   }
 }

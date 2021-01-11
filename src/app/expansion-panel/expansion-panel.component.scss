@@ -1,3 +1,16 @@
+pre {
+  display: flex;
+  flex-direction: column;
+}
+
 code {
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+p {
+  margin-top: 0.5rem;
+}
+:host {
+  width: 100%;
 }

@@ -3,8 +3,11 @@
     <mat-expansion-panel-header>
       <mat-panel-title> {{ title }} </mat-panel-title>
     </mat-expansion-panel-header>
+
     <pre>
-      <code [highlight]="data | json" class='code'></code>
+      <code [highlight]="input" class='code'></code>
+      <p> Output: </p>
+      <code [highlight]="output | json" class='code'></code>
     </pre>
   </mat-expansion-panel>
 </mat-accordion>
