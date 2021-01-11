@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CustomHttpClientService } from '../custom-http-client.service';
+import { Post } from '../../typescript/interfaces';
+
 @Component({
   selector: 'app-expansion-panel',
   templateUrl: './expansion-panel.component.html',
@@ -7,7 +9,7 @@ import { CustomHttpClientService } from '../custom-http-client.service';
 })
 export class ExpansionPanelComponent implements OnInit {
   @Input() title!: string;
-  @Input() data!: string;
+  @Input() data!: Post | Post[];
   panelOpenState: boolean = false;
   constructor(private http: CustomHttpClientService) {}
 
